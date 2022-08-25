@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class atacar : MonoBehaviour
+{
+	
+	
+	public bool estoyAtacando;
+	public bool avanzoSolo;
+	public float implusoDe1golpe =10f;
+	
+	
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+void fixedUpdate (){
+
+					if (avanzoSolo){
+						rb.velocity=transform.forward * implusoDe1golpe;
+						}	
+
+			}	
+
+
+
+   // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && !estoyAtacando ){
+			anim.SetTrigger("golpeo");
+			estoyAtacando = true;
+		}
+    }
+	
+	
+	public void DejeDeGolpear()
+	{
+					estoyAtacando = false;
+					//avanzosolo = false;
+	}	
+	
+		public void AnanzoSolo()
+	{
+			avanzoSolo = true;
+	}	
+	
+		public void DejoDeAvanzar()
+	{
+			avanzoSolo = true;
+	}	
+	
+}
